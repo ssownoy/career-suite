@@ -2371,10 +2371,7 @@
 
         // Translate tabs
         const tabs = document.querySelectorAll(".nav-tab");
-        if (tabs[0]) tabs[0].innerHTML = `<span class="icon">🔥</span><span>${pack.roasterTab}</span>`;
-        if (tabs[1]) tabs[1].innerHTML = `<span class="icon">✉️</span><span>${pack.coverLetterTab}</span>`;
-        if (tabs[2]) tabs[2].innerHTML = `<span class="icon">🎤</span><span>${pack.interviewTab}</span>`;
-        if (tabs[3]) tabs[3].innerHTML = `<span class="icon">💼</span><span>${pack.linkedinTab}</span>`;
+        updateTabLabels();
       }
 
       function setLoading(isLoading) {
@@ -3265,6 +3262,7 @@
       const storedTheme = getStoredTheme();
       applyTheme(storedTheme || "dark");
       applyLanguage(currentLang);
+      updateTabLabels();
     })();
   </script>
 </body>
