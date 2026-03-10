@@ -1951,9 +1951,23 @@
           jobsSubtitle: "BASED ON Your Resume AND KEY SKILLS.",
           jobsButton: "FIND MATCHING JOBS",
           jobsFinding: "FINDING MATCHING JOBS…",
-          jobsEmpty: "NO MATCHING JOBS FOUND. TRY TWEAKING Your Resume FOCUS.",
-          jobsApply: "APPLY",
-          jobsHint: "OPENS A JOB SEARCH IN A NEW TAB.",
+          jobsEmpty: "СОВПАДЕНИЙ НЕ НАЙДЕНО. ПОПРОБУЙТЕ ИЗМЕНИТЬ ФОКУС РЕЗЮМЕ.",
+          jobsApply: "ОТКЛИКНУТЬСЯ",
+          // New tools translations
+          coverLetterTab: "✉️ Сопроводительное письмо",
+          interviewTab: "🎤 Подготовка к интервью",
+          linkedinTab: "💼 LinkedIn Bio",
+          coverResumeLabel: "Ваше резюме",
+          coverJobLabel: "Описание вакансии",
+          coverBtn: "Сгенерировать письмо ✉️",
+          coverPlaceholder: "Заполните резюме и вакансию, затем нажмите Сгенерировать",
+          interviewJobLabel: "Описание вакансии",
+          interviewBtn: "Сгенерировать вопросы 🎤",
+          interviewPlaceholder: "Вставьте описание вакансии и нажмите кнопку",
+          linkedinResumeLabel: "Ваше резюме",
+          linkedinBtn: "Сгенерировать LinkedIn Bio 💼",
+          linkedinPlaceholder: "Вставьте резюме и нажмите кнопку",
+          jobsHint: "ОТКРЫВАЕТ ПОИСК РАБОТЫ В НОВОЙ ВКЛАДКЕ.",
           jobsSubtitle: "Based on your resume and key skills.",
           jobsButton: "Find Matching Jobs",
           jobsFinding: "Finding matching jobs…",
@@ -2136,6 +2150,20 @@
           jobsEmpty: "No encontramos buenos matches. Prueba ajustando el enfoque de tu CV.",
           jobsApply: "Postular",
           jobsHint: "Abre una búsqueda de empleos en una nueva pestaña.",
+          // New tools translations
+          coverLetterTab: "✉️ Carta de Presentación",
+          interviewTab: "🎤 Preparación Entrevista", 
+          linkedinTab: "💼 LinkedIn Bio",
+          coverResumeLabel: "Tu CV",
+          coverJobLabel: "Descripción del Puesto",
+          coverBtn: "Generar Carta ✉️",
+          coverPlaceholder: "Completa tu CV y la descripción, luego haz clic en Generar",
+          interviewJobLabel: "Descripción del Puesto",
+          interviewBtn: "Generar Preguntas 🎤",
+          interviewPlaceholder: "Pega la descripción del puesto y haz clic en Generar Preguntas",
+          linkedinResumeLabel: "Tu CV",
+          linkedinBtn: "Generar LinkedIn Bio 💼",
+          linkedinPlaceholder: "Pega tu CV y haz clic en Generar LinkedIn Bio",
           styleDesc: {
             brutal: "Roast cómico y duro. Muy agresivo, pero útil.",
             balanced: "Honesto y amable. Estilo mentor.",
@@ -2317,6 +2345,29 @@
         if (historyDrawer && historyDrawer.classList.contains("open")) {
           renderHistory();
         }
+
+        // Translate new tools
+        const coverBtn = document.getElementById("coverGenerateBtn");
+        const interviewBtn = document.getElementById("interviewGenerateBtn");
+        const linkedinBtn = document.getElementById("linkedinGenerateBtn");
+        const coverResumeTA = document.getElementById("coverResumeInput");
+        const coverJobTA = document.getElementById("coverJobInput");
+        const interviewJobTA = document.getElementById("interviewJobInput");
+        const linkedinResumeTA = document.getElementById("linkedinResumeInput");
+
+        if (coverBtn) coverBtn.innerHTML = `<span class="icon">✉️</span><span>${pack.coverBtn}</span>`;
+        if (interviewBtn) interviewBtn.innerHTML = `<span class="icon">🎤</span><span>${pack.interviewBtn}</span>`;
+        if (linkedinBtn) linkedinBtn.innerHTML = `<span class="icon">💼</span><span>${pack.linkedinBtn}</span>`;
+        if (coverResumeTA) coverResumeTA.placeholder = pack.coverResumeLabel;
+        if (coverJobTA) coverJobTA.placeholder = pack.coverJobLabel;
+        if (interviewJobTA) interviewJobTA.placeholder = pack.interviewJobLabel;
+        if (linkedinResumeTA) linkedinResumeTA.placeholder = pack.linkedinResumeLabel;
+
+        // Translate tabs
+        const tabs = document.querySelectorAll(".nav-tab");
+        if (tabs[1]) tabs[1].innerHTML = `<span class="icon">✉️</span><span>${pack.coverLetterTab}</span>`;
+        if (tabs[2]) tabs[2].innerHTML = `<span class="icon">🎤</span><span>${pack.interviewTab}</span>`;
+        if (tabs[3]) tabs[3].innerHTML = `<span class="icon">💼</span><span>${pack.linkedinTab}</span>`;
       }
 
       function setLoading(isLoading) {
