@@ -1955,7 +1955,10 @@
           jobsApply: "ОТКЛИКНУТЬСЯ",
           // New tools translations
           roasterTab: "🔥 Разнести резюме",
-          coverLetterTab: "✉️ Сопроводительное письмо",
+          roasterTab: "🔥 Разнести резюме",
+          coverLetterTab: "✉️ Письмо",
+          interviewTab: "🎤 Интервью",
+          linkedinTab: "💼 LinkedIn Bio",
           interviewTab: "🎤 Подготовка к интервью",
           linkedinTab: "💼 LinkedIn Bio",
           coverResumeLabel: "Ваше резюме",
@@ -2152,7 +2155,10 @@
           jobsApply: "Postular",
           jobsHint: "Abre una búsqueda de empleos en una nueva pestaña.",
           // New tools translations
-          coverLetterTab: "✉️ Carta de Presentación",
+          roasterTab: "🔥 Resume Roaster",
+          coverLetterTab: "✉️ Cover Letter",
+          interviewTab: "🎤 Interview Prep",
+          linkedinTab: "💼 LinkedIn Bio",
           interviewTab: "🎤 Preparación Entrevista", 
           linkedinTab: "💼 LinkedIn Bio",
           coverResumeLabel: "Tu CV",
@@ -2366,6 +2372,7 @@
 
         // Translate tabs
         const tabs = document.querySelectorAll(".nav-tab");
+        if (tabs[0]) tabs[0].innerHTML = `<span class="icon">🔥</span><span>${pack.roasterTab}</span>`;
         if (tabs[1]) tabs[1].innerHTML = `<span class="icon">✉️</span><span>${pack.coverLetterTab}</span>`;
         if (tabs[2]) tabs[2].innerHTML = `<span class="icon">🎤</span><span>${pack.interviewTab}</span>`;
         if (tabs[3]) tabs[3].innerHTML = `<span class="icon">💼</span><span>${pack.linkedinTab}</span>`;
