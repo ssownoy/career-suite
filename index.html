@@ -1392,6 +1392,74 @@
     .pages-pill {
       white-space: nowrap;
     }
+
+    /* Navigation tabs */
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid rgba(148, 163, 184, 0.3);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .nav-tab:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255, 92, 51, 0.5);
+      background: rgba(255, 92, 51, 0.1);
+      color: var(--text);
+    }
+
+    .nav-tab.active {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(255, 92, 51, 0.3);
+    }
+
+    .nav-tab span.icon {
+      font-size: 1rem;
+    }
+
+    /* Tool panels - hidden by default except resume roaster */
+    .tool-panel {
+      display: none;
+    }
+
+    .tool-panel.active {
+      display: block;
+    }
+
+    /* Two-column layout for cover letter */
+    .cover-letter-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 880px) {
+      .cover-letter-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
   </style>
 </head>
 <body>
@@ -1418,11 +1486,12 @@
           </div>
           <div class="title-text">
             <h1>
-              <span id="uiAppName">Resume Roaster</span>
+              <span id="uiAppName">Career Suite</span>
+            <span class="badge">Resume Roaster</span>
               
             </h1>
             <div class="title-sub" id="uiTagline">
-              Paste your resume, sacrifice your ego, and get a savage but actually useful critique.
+              4 career tools in one suite: Resume critique, cover letters, interview prep & LinkedIn bios.
             </div>
           </div>
         </div>
@@ -1440,8 +1509,29 @@
         </div>
       </header>
 
+      <!-- Navigation tabs -->
+      <nav class="nav-tabs" role="tablist" aria-label="Career tools">
+        <button type="button" class="nav-tab active" data-tool="resume" role="tab" aria-selected="true">
+          <span class="icon">🔥</span>
+          <span>Resume Roaster</span>
+        </button>
+        <button type="button" class="nav-tab" data-tool="coverletter" role="tab" aria-selected="false">
+          <span class="icon">✉️</span>
+          <span>Cover Letter</span>
+        </button>
+        <button type="button" class="nav-tab" data-tool="interview" role="tab" aria-selected="false">
+          <span class="icon">🎤</span>
+          <span>Interview Prep</span>
+        </button>
+        <button type="button" class="nav-tab" data-tool="linkedin" role="tab" aria-selected="false">
+          <span class="icon">💼</span>
+          <span>LinkedIn Bio</span>
+        </button>
+      </nav>
+
       <!-- Main panels -->
-      <main class="main-grid">
+      <div class="tool-panel active" id="resume-panel">
+        <main class="main-grid">
         <!-- Input panel -->
         <section class="panel" aria-label="Resume input">
           <div class="panel-header">
@@ -1568,6 +1658,197 @@
           </div>
         </section>
       </main>
+      </div>
+
+      <!-- Cover Letter Tool -->
+      <div class="tool-panel" id="coverletter-panel">
+        <main class="main-grid">
+          <!-- Resume input panel -->
+          <section class="panel" aria-label="Resume input">
+            <div class="panel-header">
+              <div>
+                <div class="panel-title">
+                  <span class="icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 6h12M2 8h12M2 10h12" stroke="currentColor" stroke-width="1"/><path d="M5 2v2M11 2v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                  Your Resume
+                </div>
+                <div class="panel-subtitle">Paste your resume text for context.</div>
+              </div>
+            </div>
+            <div class="textarea-wrap">
+              <textarea
+                id="coverResumeInput"
+                placeholder="Paste your resume here..."
+              ></textarea>
+            </div>
+          </section>
+
+          <!-- Job description panel -->
+          <section class="panel" aria-label="Job description input">
+            <div class="panel-header">
+              <div>
+                <div class="panel-title">
+                  <span class="icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 6h12M2 8h12M2 10h12" stroke="currentColor" stroke-width="1"/><path d="M5 2v2M11 2v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                  Job Description
+                </div>
+                <div class="panel-subtitle">Paste the job description you're applying for.</div>
+              </div>
+            </div>
+            <div class="textarea-wrap">
+              <textarea
+                id="coverJobInput"
+                placeholder="Paste the job description here..."
+              ></textarea>
+            </div>
+          </section>
+        </main>
+
+        <!-- Cover letter output section -->
+        <section class="panel" aria-label="Cover letter output" style="margin-top: 16px;">
+          <div class="panel-header">
+            <div>
+              <div class="panel-title">
+                <span class="icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><ellipse cx="8" cy="12" rx="4" ry="2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="6" y="8" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                Generated Cover Letter
+              </div>
+              <div class="panel-subtitle">AI-generated cover letter tailored to the job.</div>
+            </div>
+          </div>
+          <div class="output-body">
+            <div id="coverOutputBox" class="output-box empty" aria-live="polite">
+              <div class="output-placeholder">
+                Fill in your resume and job description, then click "Generate Cover Letter ✉️"
+              </div>
+            </div>
+            <div class="copy-row">
+              <div id="coverErrorContainer" style="display:none;"></div>
+              <button type="button" class="copy-btn" id="coverCopyBtn" disabled>
+                <span>📋</span>
+                <span>Copy Cover Letter</span>
+              </button>
+            </div>
+          </div>
+          <div class="actions-row">
+            <button type="button" class="roast-btn" id="coverGenerateBtn">
+              <span class="icon">✉️</span>
+              <span>Generate Cover Letter ✉️</span>
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <!-- Interview Prep Tool -->
+      <div class="tool-panel" id="interview-panel">
+        <main class="main-grid">
+          <!-- Job description panel -->
+          <section class="panel" aria-label="Job description input">
+            <div class="panel-header">
+              <div>
+                <div class="panel-title">
+                  <span class="icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 6h12M2 8h12M2 10h12" stroke="currentColor" stroke-width="1"/><path d="M5 2v2M11 2v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                  Job Description
+                </div>
+                <div class="panel-subtitle">Paste the job description to generate interview questions.</div>
+              </div>
+            </div>
+            <div class="textarea-wrap">
+              <textarea
+                id="interviewJobInput"
+                placeholder="Paste the job description here..."
+              ></textarea>
+            </div>
+          </section>
+
+          <!-- Interview output panel -->
+          <section class="panel" aria-label="Interview questions output">
+            <div class="panel-header">
+              <div>
+                <div class="panel-title">
+                  <span class="icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><ellipse cx="8" cy="12" rx="4" ry="2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="6" y="8" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                  Interview Questions & Answers
+                </div>
+                <div class="panel-subtitle">10 likely interview questions with suggested answers.</div>
+              </div>
+            </div>
+            <div class="output-body">
+              <div id="interviewOutputBox" class="output-box empty" aria-live="polite">
+                <div class="output-placeholder">
+                  Paste a job description and click "Generate Interview Questions 🎤"
+                </div>
+              </div>
+              <div class="copy-row">
+                <div id="interviewErrorContainer" style="display:none;"></div>
+                <button type="button" class="copy-btn" id="interviewCopyBtn" disabled>
+                  <span>📋</span>
+                  <span>Copy Questions</span>
+                </button>
+              </div>
+            </div>
+          </section>
+        </main>
+        <div class="actions-row">
+          <button type="button" class="roast-btn" id="interviewGenerateBtn">
+            <span class="icon">🎤</span>
+            <span>Generate Interview Questions 🎤</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- LinkedIn Bio Tool -->
+      <div class="tool-panel" id="linkedin-panel">
+        <main class="main-grid">
+          <!-- Resume input panel -->
+          <section class="panel" aria-label="Resume input">
+            <div class="panel-header">
+              <div>
+                <div class="panel-title">
+                  <span class="icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 6h12M2 8h12M2 10h12" stroke="currentColor" stroke-width="1"/><path d="M5 2v2M11 2v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+                  Your Resume
+                </div>
+                <div class="panel-subtitle">Paste your resume to generate a LinkedIn bio.</div>
+              </div>
+            </div>
+            <div class="textarea-wrap">
+              <textarea
+                id="linkedinResumeInput"
+                placeholder="Paste your resume here..."
+              ></textarea>
+            </div>
+          </section>
+
+          <!-- LinkedIn bio output panel -->
+          <section class="panel" aria-label="LinkedIn bio output">
+            <div class="panel-header">
+              <div>
+                <div class="panel-title">
+                  <span class="icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><ellipse cx="8" cy="12" rx="4" ry="2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="6" y="8" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
+                  Generated LinkedIn Bio
+                </div>
+                <div class="panel-subtitle">Professional LinkedIn profile summary.</div>
+              </div>
+            </div>
+            <div class="output-body">
+              <div id="linkedinOutputBox" class="output-box empty" aria-live="polite">
+                <div class="output-placeholder">
+                  Paste your resume and click "Generate LinkedIn Bio 💼"
+                </div>
+              </div>
+              <div class="copy-row">
+                <div id="linkedinErrorContainer" style="display:none;"></div>
+                <button type="button" class="copy-btn" id="linkedinCopyBtn" disabled>
+                  <span>📋</span>
+                  <span>Copy Bio</span>
+                </button>
+              </div>
+            </div>
+          </section>
+        </main>
+        <div class="actions-row">
+          <button type="button" class="roast-btn" id="linkedinGenerateBtn">
+            <span class="icon">💼</span>
+            <span>Generate LinkedIn Bio 💼</span>
+          </button>
+        </div>
+      </div>
 
       <!-- Footer -->
       <footer class="footer">
@@ -2605,6 +2886,254 @@
           });
 
           jobsList.appendChild(card);
+        });
+      }
+
+      // Tab switching functionality
+      const navTabs = document.querySelectorAll('.nav-tab');
+      const toolPanels = document.querySelectorAll('.tool-panel');
+
+      function switchTab(toolName) {
+        // Update nav tabs
+        navTabs.forEach(tab => {
+          const isActive = tab.dataset.tool === toolName;
+          tab.classList.toggle('active', isActive);
+          tab.setAttribute('aria-selected', isActive);
+        });
+
+        // Update tool panels
+        toolPanels.forEach(panel => {
+          panel.classList.toggle('active', panel.id === `${toolName}-panel`);
+        });
+      }
+
+      navTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          switchTab(tab.dataset.tool);
+        });
+      });
+
+      // Cover Letter functionality
+      const coverGenerateBtn = document.getElementById('coverGenerateBtn');
+      const coverCopyBtn = document.getElementById('coverCopyBtn');
+      const coverResumeInput = document.getElementById('coverResumeInput');
+      const coverJobInput = document.getElementById('coverJobInput');
+      const coverOutputBox = document.getElementById('coverOutputBox');
+
+      async function generateCoverLetter() {
+        const resume = coverResumeInput.value.trim();
+        const jobDesc = coverJobInput.value.trim();
+        const currentLang = localStorage.getItem(LANG_KEY) || 'en';
+
+        if (!resume || !jobDesc) {
+          showCoverError('Please fill in both your resume and the job description.');
+          return;
+        }
+
+        coverGenerateBtn.disabled = true;
+        coverGenerateBtn.innerHTML = '<span class="icon">⏳</span><span>Generating...</span>';
+        clearCoverError();
+
+        try {
+          const response = await fetch('/api/coverletter', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ resume, jobDescription: jobDesc, lang: currentLang })
+          });
+
+          const data = await response.json();
+          
+          if (response.ok) {
+            coverOutputBox.textContent = data.letter;
+            coverOutputBox.classList.remove('empty');
+            coverCopyBtn.disabled = false;
+          } else {
+            showCoverError(data.error || 'Failed to generate cover letter');
+          }
+        } catch (error) {
+          console.error('Cover letter generation error:', error);
+          showCoverError('Failed to generate cover letter. Please try again.');
+        } finally {
+          coverGenerateBtn.disabled = false;
+          coverGenerateBtn.innerHTML = '<span class="icon">✉️</span><span>Generate Cover Letter ✉️</span>';
+        }
+      }
+
+      function showCoverError(message) {
+        const errorContainer = document.getElementById('coverErrorContainer');
+        errorContainer.innerHTML = `<div class="error-text"><span class="icon">⚠️</span>${message}</div>`;
+        errorContainer.style.display = 'block';
+      }
+
+      function clearCoverError() {
+        const errorContainer = document.getElementById('coverErrorContainer');
+        errorContainer.style.display = 'none';
+      }
+
+      if (coverGenerateBtn) {
+        coverGenerateBtn.addEventListener('click', generateCoverLetter);
+      }
+
+      if (coverCopyBtn) {
+        coverCopyBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(coverOutputBox.textContent);
+            const originalText = coverCopyBtn.innerHTML;
+            coverCopyBtn.innerHTML = '<span>✓</span><span>Copied!</span>';
+            setTimeout(() => {
+              coverCopyBtn.innerHTML = originalText;
+            }, 2000);
+          } catch {
+            showCoverError('Failed to copy to clipboard');
+          }
+        });
+      }
+
+      // Interview Prep functionality
+      const interviewGenerateBtn = document.getElementById('interviewGenerateBtn');
+      const interviewCopyBtn = document.getElementById('interviewCopyBtn');
+      const interviewJobInput = document.getElementById('interviewJobInput');
+      const interviewOutputBox = document.getElementById('interviewOutputBox');
+
+      async function generateInterviewQuestions() {
+        const jobDesc = interviewJobInput.value.trim();
+        const currentLang = localStorage.getItem(LANG_KEY) || 'en';
+
+        if (!jobDesc) {
+          showInterviewError('Please provide a job description.');
+          return;
+        }
+
+        interviewGenerateBtn.disabled = true;
+        interviewGenerateBtn.innerHTML = '<span class="icon">⏳</span><span>Generating...</span>';
+        clearInterviewError();
+
+        try {
+          const response = await fetch('/api/interview', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ jobDescription: jobDesc, lang: currentLang })
+          });
+
+          const data = await response.json();
+          
+          if (response.ok) {
+            interviewOutputBox.textContent = data.questions;
+            interviewOutputBox.classList.remove('empty');
+            interviewCopyBtn.disabled = false;
+          } else {
+            showInterviewError(data.error || 'Failed to generate interview questions');
+          }
+        } catch (error) {
+          console.error('Interview questions generation error:', error);
+          showInterviewError('Failed to generate interview questions. Please try again.');
+        } finally {
+          interviewGenerateBtn.disabled = false;
+          interviewGenerateBtn.innerHTML = '<span class="icon">🎤</span><span>Generate Interview Questions 🎤</span>';
+        }
+      }
+
+      function showInterviewError(message) {
+        const errorContainer = document.getElementById('interviewErrorContainer');
+        errorContainer.innerHTML = `<div class="error-text"><span class="icon">⚠️</span>${message}</div>`;
+        errorContainer.style.display = 'block';
+      }
+
+      function clearInterviewError() {
+        const errorContainer = document.getElementById('interviewErrorContainer');
+        errorContainer.style.display = 'none';
+      }
+
+      if (interviewGenerateBtn) {
+        interviewGenerateBtn.addEventListener('click', generateInterviewQuestions);
+      }
+
+      if (interviewCopyBtn) {
+        interviewCopyBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(interviewOutputBox.textContent);
+            const originalText = interviewCopyBtn.innerHTML;
+            interviewCopyBtn.innerHTML = '<span>✓</span><span>Copied!</span>';
+            setTimeout(() => {
+              interviewCopyBtn.innerHTML = originalText;
+            }, 2000);
+          } catch {
+            showInterviewError('Failed to copy to clipboard');
+          }
+        });
+      }
+
+      // LinkedIn Bio functionality
+      const linkedinGenerateBtn = document.getElementById('linkedinGenerateBtn');
+      const linkedinCopyBtn = document.getElementById('linkedinCopyBtn');
+      const linkedinResumeInput = document.getElementById('linkedinResumeInput');
+      const linkedinOutputBox = document.getElementById('linkedinOutputBox');
+
+      async function generateLinkedInBio() {
+        const resume = linkedinResumeInput.value.trim();
+        const currentLang = localStorage.getItem(LANG_KEY) || 'en';
+
+        if (!resume) {
+          showLinkedinError('Please provide your resume.');
+          return;
+        }
+
+        linkedinGenerateBtn.disabled = true;
+        linkedinGenerateBtn.innerHTML = '<span class="icon">⏳</span><span>Generating...</span>';
+        clearLinkedinError();
+
+        try {
+          const response = await fetch('/api/linkedin', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ resume, lang: currentLang })
+          });
+
+          const data = await response.json();
+          
+          if (response.ok) {
+            linkedinOutputBox.textContent = data.bio;
+            linkedinOutputBox.classList.remove('empty');
+            linkedinCopyBtn.disabled = false;
+          } else {
+            showLinkedinError(data.error || 'Failed to generate LinkedIn bio');
+          }
+        } catch (error) {
+          console.error('LinkedIn bio generation error:', error);
+          showLinkedinError('Failed to generate LinkedIn bio. Please try again.');
+        } finally {
+          linkedinGenerateBtn.disabled = false;
+          linkedinGenerateBtn.innerHTML = '<span class="icon">💼</span><span>Generate LinkedIn Bio 💼</span>';
+        }
+      }
+
+      function showLinkedinError(message) {
+        const errorContainer = document.getElementById('linkedinErrorContainer');
+        errorContainer.innerHTML = `<div class="error-text"><span class="icon">⚠️</span>${message}</div>`;
+        errorContainer.style.display = 'block';
+      }
+
+      function clearLinkedinError() {
+        const errorContainer = document.getElementById('linkedinErrorContainer');
+        errorContainer.style.display = 'none';
+      }
+
+      if (linkedinGenerateBtn) {
+        linkedinGenerateBtn.addEventListener('click', generateLinkedInBio);
+      }
+
+      if (linkedinCopyBtn) {
+        linkedinCopyBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(linkedinOutputBox.textContent);
+            const originalText = linkedinCopyBtn.innerHTML;
+            linkedinCopyBtn.innerHTML = '<span>✓</span><span>Copied!</span>';
+            setTimeout(() => {
+              linkedinCopyBtn.innerHTML = originalText;
+            }, 2000);
+          } catch {
+            showLinkedinError('Failed to copy to clipboard');
+          }
         });
       }
 
