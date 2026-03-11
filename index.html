@@ -2981,7 +2981,7 @@
 
       function applyTheme(theme) {
         const nextTheme = theme === "light" ? "light" : "dark";
-        document.body.setAttribute("data-theme", nextTheme);
+        document.body.setAttribute("data-theme", nextTheme); document.documentElement.setAttribute("data-theme", nextTheme);
         if (themeToggle) {
           themeToggle.dataset.theme = nextTheme;
           themeToggle.textContent = nextTheme === "light" ? "☀️" : "🌙";
