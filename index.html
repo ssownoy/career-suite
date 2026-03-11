@@ -1981,6 +1981,17 @@
           linkedinResumeLabel: "Paste your resume here...",
           linkedinBtn: "Generate LinkedIn Bio",
           linkedinPlaceholder: "Paste your resume and click Generate LinkedIn Bio",
+          // Static titles and buttons for new tools
+          coverJobTitle: "Job Description",
+          coverResumeTitle: "Your Resume", 
+          coverOutputTitle: "Generated Cover Letter",
+          coverCopyBtn: "Copy Cover Letter",
+          interviewJobTitle: "Job Description",
+          interviewOutputTitle: "Interview Questions & Answers",
+          interviewCopyBtn: "Copy Questions",
+          linkedinResumeTitle: "Your Resume",
+          linkedinOutputTitle: "Generated LinkedIn Bio",
+          linkedinCopyBtn: "Copy Bio",
           jobsHint: "ОТКРЫВАЕТ ПОИСК РАБОТЫ В НОВОЙ ВКЛАДКЕ.",
           jobsSubtitle: "Based on your resume and key skills.",
           jobsButton: "Find Matching Jobs",
@@ -2092,6 +2103,17 @@
           linkedinResumeLabel: "Вставьте ваше резюме...",
           linkedinBtn: "Сгенерировать LinkedIn Bio",
           linkedinPlaceholder: "Вставьте резюме и нажмите кнопку",
+          // Static titles and buttons for new tools
+          coverJobTitle: "Описание вакансии",
+          coverResumeTitle: "Ваше резюме", 
+          coverOutputTitle: "Сгенерированное письмо",
+          coverCopyBtn: "Копировать письмо",
+          interviewJobTitle: "Описание вакансии",
+          interviewOutputTitle: "Вопросы и ответы для интервью",
+          interviewCopyBtn: "Копировать вопросы",
+          linkedinResumeTitle: "Ваше резюме",
+          linkedinOutputTitle: "Сгенерированный LinkedIn Bio",
+          linkedinCopyBtn: "Копировать Bio",
           styleDesc: {
             brutal: "Комедийно и жёстко. Очень сурово, но полезно.",
             balanced: "Честно, но доброжелательно. Как наставник.",
@@ -2194,6 +2216,17 @@
           linkedinResumeLabel: "Pega tu CV aquí...",
           linkedinBtn: "Generar LinkedIn Bio",
           linkedinPlaceholder: "Pega tu CV y haz clic en Generar LinkedIn Bio",
+          // Static titles and buttons for new tools
+          coverJobTitle: "Descripción del Puesto",
+          coverResumeTitle: "Tu CV", 
+          coverOutputTitle: "Carta Generada",
+          coverCopyBtn: "Copiar Carta",
+          interviewJobTitle: "Descripción del Puesto",
+          interviewOutputTitle: "Preguntas y Respuestas de Entrevista",
+          interviewCopyBtn: "Copiar Preguntas",
+          linkedinResumeTitle: "Tu CV",
+          linkedinOutputTitle: "LinkedIn Bio Generado",
+          linkedinCopyBtn: "Copiar Bio",
           styleDesc: {
             brutal: "Roast cómico y duro. Muy agresivo, pero útil.",
             balanced: "Honesto y amable. Estilo mentor.",
@@ -2398,6 +2431,36 @@
         if (tabs[1]) tabs[1].textContent = pack.coverLetterTab;
         if (tabs[2]) tabs[2].textContent = pack.interviewTab;
         if (tabs[3]) tabs[3].textContent = pack.linkedinTab;
+
+        // Translate static titles and buttons for new tools
+        // Cover Letter tool
+        const coverJobTitle = document.querySelector("#coverletter-panel .main-grid .panel:nth-child(2) .panel-title");
+        const coverResumeTitle = document.querySelector("#coverletter-panel .main-grid .panel:first-child .panel-title");
+        const coverOutputTitle = document.querySelector("#coverletter-panel .panel:last-child .panel-title");
+        const coverCopyBtn = document.getElementById("coverCopyBtn");
+        
+        if (coverJobTitle) coverJobTitle.textContent = pack.coverJobTitle;
+        if (coverResumeTitle) coverResumeTitle.textContent = pack.coverResumeTitle;
+        if (coverOutputTitle) coverOutputTitle.textContent = pack.coverOutputTitle;
+        if (coverCopyBtn) coverCopyBtn.innerHTML = `<span class="icon">📋</span><span>${pack.coverCopyBtn}</span>`;
+
+        // Interview Prep tool
+        const interviewJobTitle = document.querySelector("#interview-panel .panel:first-child .panel-title");
+        const interviewOutputTitle = document.querySelector("#interview-panel .panel:last-child .panel-title");
+        const interviewCopyBtn = document.getElementById("interviewCopyBtn");
+        
+        if (interviewJobTitle) interviewJobTitle.textContent = pack.interviewJobTitle;
+        if (interviewOutputTitle) interviewOutputTitle.textContent = pack.interviewOutputTitle;
+        if (interviewCopyBtn) interviewCopyBtn.innerHTML = `<span class="icon">📋</span><span>${pack.interviewCopyBtn}</span>`;
+
+        // LinkedIn Bio tool
+        const linkedinResumeTitle = document.querySelector("#linkedin-panel .panel:first-child .panel-title");
+        const linkedinOutputTitle = document.querySelector("#linkedin-panel .panel:last-child .panel-title");
+        const linkedinCopyBtn = document.getElementById("linkedinCopyBtn");
+        
+        if (linkedinResumeTitle) linkedinResumeTitle.textContent = pack.linkedinResumeTitle;
+        if (linkedinOutputTitle) linkedinOutputTitle.textContent = pack.linkedinOutputTitle;
+        if (linkedinCopyBtn) linkedinCopyBtn.innerHTML = `<span class="icon">📋</span><span>${pack.linkedinCopyBtn}</span>`;
       }
 
       function setLoading(isLoading) {
