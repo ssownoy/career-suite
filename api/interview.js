@@ -22,7 +22,9 @@ export default async function handler(req, res) {
           {
             role: 'system',
             content: lang === 'en' 
-              ? 'You are an interview coach. Generate 10 likely interview questions based on the job description, along with suggested answers for each. Format each question and answer clearly with "Q:" and "A:" prefixes. Make answers practical and professional.'
+              ? 'You are an interview coach. Generate 10 likely interview questions based on job description, along with suggested answers for each. Format each question and answer clearly with "Q:" and "A:" prefixes. Make answers practical and professional.'
+              : lang === 'es'
+              ? 'Eres un coach de entrevistas. Genera 10 preguntas de entrevista probables basadas en la descripción del puesto, junto con respuestas sugeridas para cada una. Formatea cada pregunta y respuesta claramente con los prefijos "Q:" y "A:". Haz las respuestas prácticas y profesionales.'
               : 'Вы тренер по собеседованиям. Сгенерируйте 10 вероятных вопросов для собеседования на основе описания вакансии, а также предложенные ответы на каждый. Четко форматируйте каждый вопрос и ответ с префиксами "Q:" и "A:". Сделайте ответы практичными и профессиональными.'
           },
           {

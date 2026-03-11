@@ -22,7 +22,9 @@ export default async function handler(req, res) {
           {
             role: 'system',
             content: lang === 'en' 
-              ? 'You are a LinkedIn profile expert. Write a compelling LinkedIn bio/summary based on the resume provided. Make it professional, engaging, and optimized for LinkedIn. Include relevant keywords and highlight key achievements. Keep it to 150-200 words max.'
+              ? 'You are a LinkedIn profile expert. Write a compelling LinkedIn bio/summary based on resume provided. Make it professional, engaging, and optimized for LinkedIn. Include relevant keywords and highlight key achievements. Keep it to 150-200 words max.'
+              : lang === 'es'
+              ? 'Eres un experto en perfiles de LinkedIn. Escribe una biografía/resumen convincente para LinkedIn basada en el currículum proporcionado. Hazlo profesional, atractivo y optimizado para LinkedIn. Incluye palabras clave relevantes y destaca los logros clave. Máximo 150-200 palabras.'
               : 'Вы эксперт по профилям LinkedIn. Напишите убедительное био/резюме для LinkedIn на основе предоставленного резюме. Сделайте его профессиональным, привлекательным и оптимизированным для LinkedIn. Включите релевантные ключевые слова и выделите ключевые достижения. Максимум 150-200 слов.'
           },
           {
