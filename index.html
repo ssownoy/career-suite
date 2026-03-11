@@ -1302,6 +1302,9 @@
       background: #fff !important;
     }
 
+    [data-theme="light"] .lang-btn.active { background: #ff5c33 !important; color: #fff !important; border-color: #ff5c33 !important; }
+    [data-theme="light"] .nav-tab { background: #f3f4f6 !important; color: #374151 !important; border-color: #e5e7eb !important; }
+    [data-theme="light"] .nav-tab.active { background: #ff5c33 !important; color: #fff !important; }
     [data-theme="light"] .pill { background: transparent !important; border-color: #ccc !important; color: #555 !important; } [data-theme="light"] .roast-meta { background: transparent !important; color: #555 !important; }
 
     body[data-theme="light"] .ghost-btn,
@@ -3087,7 +3090,7 @@
           if (!perfectText.trim()) {
             perfectText = JSON.stringify(data);
           }
-          perfectResumeCopyBtn.onclick = async () => { try { await navigator.clipboard.writeText(perfectResumeBox.innerText); perfectResumeCopyBtn.innerHTML = "<span>✅</span><span>Copied!</span>"; setTimeout(() => { perfectResumeCopyBtn.innerHTML = "<span>📋</span><span>Copy Resume</span>"; }, 1500); } catch(e) { console.error(e); } };
+          perfectResumeCopyBtn.onclick = async () => { try { await navigator.clipboard.writeText(perfectResumeBox.innerText); perfectResumeCopyBtn.innerHTML = "<span>✅</span><span>" + t("copied") + "</span>"; setTimeout(() => { perfectResumeCopyBtn.innerHTML = "<span>📋</span><span>" + t("perfectResumeCopyLabel") + "</span>"; }, 1500); } catch(e) { console.error(e); } };
           perfectResumeBox.innerHTML = `<div style="white-space: pre-wrap; line-height: 1.5;">${perfectText}</div>`;
           perfectResumeCopyBtn.disabled = false;
           
