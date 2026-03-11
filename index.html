@@ -2394,9 +2394,9 @@
 
         // Translate tabs
         const tabs = document.querySelectorAll(".nav-tab");
-        if (tabs[1]) tabs[1].innerHTML = `<span class="icon">✉️</span><span>${pack.coverLetterTab}</span>`;
-        if (tabs[2]) tabs[2].innerHTML = `<span class="icon">🎤</span><span>${pack.interviewTab}</span>`;
-        if (tabs[3]) tabs[3].innerHTML = `<span class="icon">💼</span><span>${pack.linkedinTab}</span>`;
+        if (tabs[1]) tabs[1].textContent = pack.coverLetterTab;
+        if (tabs[2]) tabs[2].textContent = pack.interviewTab;
+        if (tabs[3]) tabs[3].textContent = pack.linkedinTab;
       }
 
       function setLoading(isLoading) {
