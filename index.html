@@ -1712,7 +1712,7 @@
                   <span style="display:none"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 6h12M2 8h12M2 10h12" stroke="currentColor" stroke-width="1"/><path d="M5 2v2M11 2v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
                   Your Resume
                 </div>
-                <div class="panel-subtitle">Paste your resume text for context.</div>
+                <div class="panel-subtitle" id="roastResumeSubtitle">Paste your resume text for context.</div>
               </div>
             </div>
             <div class="textarea-wrap">
@@ -1731,7 +1731,7 @@
                   <span style="display:none"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 6h12M2 8h12M2 10h12" stroke="currentColor" stroke-width="1"/><path d="M5 2v2M11 2v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
                   Job Description
                 </div>
-                <div class="panel-subtitle">Paste the job description you're applying for.</div>
+                <div class="panel-subtitle" id="coverJobSubtitle">Paste the job description you're applying for.</div>
               </div>
             </div>
             <div class="textarea-wrap">
@@ -1751,7 +1751,7 @@
                 <span style="display:none"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><ellipse cx="8" cy="12" rx="4" ry="2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="6" y="8" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
                 Generated Cover Letter
               </div>
-              <div class="panel-subtitle">AI-generated cover letter tailored to the job.</div>
+              <div class="panel-subtitle" id="coverOutputSubtitle">AI-generated cover letter tailored to the job.</div>
             </div>
           </div>
           <div class="output-body">
@@ -1788,7 +1788,7 @@
                   <span style="display:none"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 6h12M2 8h12M2 10h12" stroke="currentColor" stroke-width="1"/><path d="M5 2v2M11 2v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
                   Job Description
                 </div>
-                <div class="panel-subtitle">Paste the job description to generate interview questions.</div>
+                <div class="panel-subtitle" id="interviewJobSubtitle">Paste the job description to generate interview questions.</div>
               </div>
             </div>
             <div class="textarea-wrap">
@@ -1807,7 +1807,7 @@
                   <span style="display:none"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><ellipse cx="8" cy="12" rx="4" ry="2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="6" y="8" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
                   Interview Questions & Answers
                 </div>
-                <div class="panel-subtitle">10 likely interview questions with suggested answers.</div>
+                <div class="panel-subtitle" id="interviewOutputSubtitle">10 likely interview questions with suggested answers.</div>
               </div>
             </div>
             <div class="output-body">
@@ -1845,7 +1845,7 @@
                   <span style="display:none"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 6h12M2 8h12M2 10h12" stroke="currentColor" stroke-width="1"/><path d="M5 2v2M11 2v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
                   Your Resume
                 </div>
-                <div class="panel-subtitle">Paste your resume to generate a LinkedIn bio.</div>
+                <div class="panel-subtitle" id="linkedinResumeSubtitle">Paste your resume to generate a LinkedIn bio.</div>
               </div>
             </div>
             <div class="textarea-wrap">
@@ -1864,7 +1864,7 @@
                   <span style="display:none"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><ellipse cx="8" cy="12" rx="4" ry="2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="6" y="8" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
                   Generated LinkedIn Bio
                 </div>
-                <div class="panel-subtitle">Professional LinkedIn profile summary.</div>
+                <div class="panel-subtitle" id="linkedinOutputSubtitle">Professional LinkedIn profile summary.</div>
               </div>
             </div>
             <div class="output-body">
@@ -2043,6 +2043,14 @@
           perfectResumeTitle: "Your Perfect Resume",
           perfectResumeCopyLabel: "Copy Resume",
           perfectResumeSubtitle: "ATS-friendly resume, ready to use.",
+          // Subtitle translations
+          roastResumeSubtitle: "Paste your resume text for context.",
+          coverJobSubtitle: "Paste the job description you're applying for.",
+          coverOutputSubtitle: "AI-generated cover letter tailored to the job.",
+          interviewJobSubtitle: "Paste the job description to generate interview questions.",
+          interviewOutputSubtitle: "10 likely interview questions with suggested answers.",
+          linkedinResumeSubtitle: "Paste your resume to generate a LinkedIn bio.",
+          linkedinOutputSubtitle: "Professional LinkedIn profile summary.",
           jobsHint: "ОТКРЫВАЕТ ПОИСК РАБОТЫ В НОВОЙ ВКЛАДКЕ.",
           jobsSubtitle: "Based on your resume and key skills.",
           jobsButton: "Find Matching Jobs",
@@ -2176,6 +2184,14 @@
           perfectResumeTitle: "Ваше идеальное резюме",
           perfectResumeCopyLabel: "Скопировать резюме",
           perfectResumeSubtitle: "ATS-оптимизированное резюме, готово к использованию.",
+          // Subtitle translations
+          roastResumeSubtitle: "Вставьте текст резюме для контекста.",
+          coverJobSubtitle: "Вставьте описание вакансии.",
+          coverOutputSubtitle: "Письмо сгенерированное AI под вакансию.",
+          interviewJobSubtitle: "Вставьте описание вакансии для генерации вопросов.",
+          interviewOutputSubtitle: "10 вероятных вопросов с ответами.",
+          linkedinResumeSubtitle: "Вставьте резюме для генерации LinkedIn Bio.",
+          linkedinOutputSubtitle: "Профессиональное резюме для LinkedIn.",
           styleDesc: {
             brutal: "Комедийно и жёстко. Очень сурово, но полезно.",
             balanced: "Честно, но доброжелательно. Как наставник.",
@@ -2300,6 +2316,14 @@
           perfectResumeTitle: "Tu CV Perfecto",
           perfectResumeCopyLabel: "Copiar CV",
           perfectResumeSubtitle: "CV optimizado para ATS, listo para usar.",
+          // Subtitle translations
+          roastResumeSubtitle: "Pega el texto de tu CV.",
+          coverJobSubtitle: "Pega la descripción del puesto.",
+          coverOutputSubtitle: "Carta generada por IA para el puesto.",
+          interviewJobSubtitle: "Pega la descripción para generar preguntas.",
+          interviewOutputSubtitle: "10 preguntas probables con respuestas.",
+          linkedinResumeSubtitle: "Pega tu CV para generar el bio de LinkedIn.",
+          linkedinOutputSubtitle: "Resumen profesional para LinkedIn.",
           styleDesc: {
             brutal: "Roast cómico y duro. Muy agresivo, pero útil.",
             balanced: "Honesto y amable. Estilo mentor.",
@@ -2560,6 +2584,23 @@
         // Perfect Resume subtitle
         const perfectResumeSubtitle = document.getElementById("perfectResumeSubtitle");
         if (perfectResumeSubtitle) perfectResumeSubtitle.textContent = pack.perfectResumeSubtitle;
+
+        // Tool subtitles
+        const roastResumeSubtitle = document.getElementById("roastResumeSubtitle");
+        const coverJobSubtitle = document.getElementById("coverJobSubtitle");
+        const coverOutputSubtitle = document.getElementById("coverOutputSubtitle");
+        const interviewJobSubtitle = document.getElementById("interviewJobSubtitle");
+        const interviewOutputSubtitle = document.getElementById("interviewOutputSubtitle");
+        const linkedinResumeSubtitle = document.getElementById("linkedinResumeSubtitle");
+        const linkedinOutputSubtitle = document.getElementById("linkedinOutputSubtitle");
+        
+        if (roastResumeSubtitle) roastResumeSubtitle.textContent = pack.roastResumeSubtitle;
+        if (coverJobSubtitle) coverJobSubtitle.textContent = pack.coverJobSubtitle;
+        if (coverOutputSubtitle) coverOutputSubtitle.textContent = pack.coverOutputSubtitle;
+        if (interviewJobSubtitle) interviewJobSubtitle.textContent = pack.interviewJobSubtitle;
+        if (interviewOutputSubtitle) interviewOutputSubtitle.textContent = pack.interviewOutputSubtitle;
+        if (linkedinResumeSubtitle) linkedinResumeSubtitle.textContent = pack.linkedinResumeSubtitle;
+        if (linkedinOutputSubtitle) linkedinOutputSubtitle.textContent = pack.linkedinOutputSubtitle;
       }
 
       function setLoading(isLoading) {
