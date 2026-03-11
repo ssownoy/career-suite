@@ -1716,7 +1716,7 @@
           </div>
           <div class="output-body">
             <div id="coverOutputBox" class="output-box empty" aria-live="polite">
-              <div class="output-placeholder">
+              <div id="coverOutputPlaceholder" class="output-placeholder">
                 Fill in your resume and job description, then click "Generate Cover Letter ✉️"
               </div>
             </div>
@@ -1772,7 +1772,7 @@
             </div>
             <div class="output-body">
               <div id="interviewOutputBox" class="output-box empty" aria-live="polite">
-                <div class="output-placeholder">
+                <div id="interviewOutputPlaceholder" class="output-placeholder">
                   Paste a job description and click "Generate Interview Questions 🎤"
                 </div>
               </div>
@@ -1829,7 +1829,7 @@
             </div>
             <div class="output-body">
               <div id="linkedinOutputBox" class="output-box empty" aria-live="polite">
-                <div class="output-placeholder">
+                <div id="linkedinOutputPlaceholder" class="output-placeholder">
                   Paste your resume and click "Generate LinkedIn Bio 💼"
                 </div>
               </div>
@@ -1992,6 +1992,10 @@
           linkedinResumeTitle: "Your Resume",
           linkedinOutputTitle: "Generated LinkedIn Bio",
           linkedinCopyBtn: "Copy Bio",
+          // Output placeholder texts
+          coverOutputPlaceholder: "Fill in your resume and job description, then click Generate Cover Letter",
+          interviewOutputPlaceholder: "Paste a job description and click Generate Interview Questions",
+          linkedinOutputPlaceholder: "Paste your resume and click Generate LinkedIn Bio",
           jobsHint: "ОТКРЫВАЕТ ПОИСК РАБОТЫ В НОВОЙ ВКЛАДКЕ.",
           jobsSubtitle: "Based on your resume and key skills.",
           jobsButton: "Find Matching Jobs",
@@ -2114,6 +2118,10 @@
           linkedinResumeTitle: "Ваше резюме",
           linkedinOutputTitle: "Сгенерированный LinkedIn Bio",
           linkedinCopyBtn: "Копировать Bio",
+          // Output placeholder texts
+          coverOutputPlaceholder: "Заполните резюме и вакансию, затем нажмите Сгенерировать",
+          interviewOutputPlaceholder: "Вставьте описание вакансии и нажмите кнопку",
+          linkedinOutputPlaceholder: "Вставьте резюме и нажмите кнопку",
           styleDesc: {
             brutal: "Комедийно и жёстко. Очень сурово, но полезно.",
             balanced: "Честно, но доброжелательно. Как наставник.",
@@ -2227,6 +2235,10 @@
           linkedinResumeTitle: "Tu CV",
           linkedinOutputTitle: "LinkedIn Bio Generado",
           linkedinCopyBtn: "Copiar Bio",
+          // Output placeholder texts
+          coverOutputPlaceholder: "Completa tu CV y la descripción, luego haz clic en Generar",
+          interviewOutputPlaceholder: "Pega la descripción del puesto y haz clic en Generar Preguntas",
+          linkedinOutputPlaceholder: "Pega tu CV y haz clic en Generar LinkedIn Bio",
           styleDesc: {
             brutal: "Roast cómico y duro. Muy agresivo, pero útil.",
             balanced: "Honesto y amable. Estilo mentor.",
@@ -2461,6 +2473,15 @@
         if (linkedinResumeTitle) linkedinResumeTitle.textContent = pack.linkedinResumeTitle;
         if (linkedinOutputTitle) linkedinOutputTitle.textContent = pack.linkedinOutputTitle;
         if (linkedinCopyBtn) linkedinCopyBtn.innerHTML = `<span class="icon">📋</span><span>${pack.linkedinCopyBtn}</span>`;
+
+        // Translate output placeholders
+        const coverOutputPlaceholder = document.getElementById("coverOutputPlaceholder");
+        const interviewOutputPlaceholder = document.getElementById("interviewOutputPlaceholder");
+        const linkedinOutputPlaceholder = document.getElementById("linkedinOutputPlaceholder");
+        
+        if (coverOutputPlaceholder) coverOutputPlaceholder.textContent = pack.coverOutputPlaceholder;
+        if (interviewOutputPlaceholder) interviewOutputPlaceholder.textContent = pack.interviewOutputPlaceholder;
+        if (linkedinOutputPlaceholder) linkedinOutputPlaceholder.textContent = pack.linkedinOutputPlaceholder;
       }
 
       function setLoading(isLoading) {
