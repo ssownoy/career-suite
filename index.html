@@ -1229,6 +1229,7 @@
     }
 
     /* Light theme overrides */
+    html, body { background: #f5f5f7 !important; }
     body[data-theme="light"] {
       --bg: #f5f5f7;
       --bg-elevated: #ffffff;
@@ -2705,41 +2706,110 @@
       }
 
       function fillSampleResume() {
-        const sample = [
-          "JANE DOE",
-          "San Francisco, CA · linkedin.com/in/janedoe · github.com/janedoe",
-          "",
-          "SUMMARY",
-          "Motivated software engineer seeking challenging opportunities to grow my skills and add value.",
-          "",
-          "EXPERIENCE",
-          "Software Engineer, Startup Co — 2022–Present",
-          "- Worked on web app using JavaScript and React.",
-          "- Collaborated with team to ship features.",
-          "- Fixed bugs and improved performance.",
-          "",
-          "Junior Developer, Small Agency — 2020–2022",
-          "- Built websites for clients.",
-          "- Attended meetings with clients and gathered requirements.",
-          "- Helped with QA testing.",
-          "",
-          "EDUCATION",
-          "B.S. Computer Science, State University, 2020",
-          "",
-          "PROJECTS",
-          "Portfolio Website",
-          "- Built a personal portfolio site to showcase my work.",
-          "",
-          "Task Manager App",
-          "- Simple to-do app that lets users track tasks.",
-          "",
-          "SKILLS",
-          "JavaScript, React, HTML, CSS, Git, teamwork, communication, problem solving"
-        ].join("\n");
+        const currentLang = localStorage.getItem(LANG_KEY) || 'en';
+        
+        const samples = {
+          en: [
+            "JANE DOE",
+            "San Francisco, CA · linkedin.com/in/janedoe · github.com/janedoe",
+            "",
+            "SUMMARY",
+            "Motivated software engineer seeking challenging opportunities to grow my skills and add value.",
+            "",
+            "EXPERIENCE",
+            "Software Engineer, Startup Co — 2022–Present",
+            "- Worked on web app using JavaScript and React.",
+            "- Collaborated with team to ship features.",
+            "- Fixed bugs and improved performance.",
+            "",
+            "Junior Developer, Small Agency — 2020–2022",
+            "- Built websites for clients.",
+            "- Attended meetings with clients and gathered requirements.",
+            "- Helped with QA testing.",
+            "",
+            "EDUCATION",
+            "B.S. Computer Science, State University, 2020",
+            "",
+            "PROJECTS",
+            "Portfolio Website",
+            "- Built a personal portfolio site to showcase my work.",
+            "",
+            "Task Manager App",
+            "- Simple to-do app that lets users track tasks.",
+            "",
+            "SKILLS",
+            "JavaScript, React, HTML, CSS, Git, teamwork, communication, problem solving"
+          ],
+          ru: [
+            "МАРИЯ ИВАНОВА",
+            "Москва, Россия · linkedin.com/in/mariaivanova · github.com/mariaivanova",
+            "",
+            "ОБ О СЕБЕ",
+            "Мотивированный инженер-программист, ищу сложные задачи для роста навыков и добавления ценности.",
+            "",
+            "ОПЫТ РАБОТЫ",
+            "Инженер-программист, Стартап — 2022–наст. время",
+            "- Работала над веб-приложением на JavaScript и React.",
+            "- Сотрудничала с командой для запуска функций.",
+            "- Исправляла ошибки и улучшала производительность.",
+            "",
+            "Младший разработчик, Веб-студия — 2020–2022",
+            "- Создавала веб-сайты для клиентов.",
+            "- Посещала встречи с клиентами и собирала требования.",
+            "- Помогала с тестированием.",
+            "",
+            "ОБРАЗОВАНИЕ",
+            "Бакалавр информатики, Государственный университет, 2020",
+            "",
+            "ПРОЕКТЫ",
+            "Сайт-портфолио",
+            "- Создала личный сайт-портфолио для демонстрации работ.",
+            "",
+            "Менеджер задач",
+            "- Простое приложение для отслеживания задач.",
+            "",
+            "НАВЫКИ",
+            "JavaScript, React, HTML, CSS, Git, командная работа, коммуникация, решение проблем"
+          ],
+          es: [
+            "MARÍA GARCÍA",
+            "Madrid, España · linkedin.com/in/mariagarcia · github.com/mariagarcia",
+            "",
+            "RESUMEN",
+            "Ingeniera de software motivada buscando oportunidades desafiantes para crecer y aportar valor.",
+            "",
+            "EXPERIENCIA",
+            "Ingeniera de Software, Startup — 2022–Presente",
+            "- Trabajé en aplicación web usando JavaScript y React.",
+            "- Colaboré con el equipo para lanzar características.",
+            "- Corregí errores y mejoré el rendimiento.",
+            "",
+            "Desarrolladora Junior, Agencia Digital — 2020–2022",
+            "- Construí sitios web para clientes.",
+            "- Asistí a reuniones con clientes y recopilé requisitos.",
+            "- Ayudé con pruebas de QA.",
+            "",
+            "EDUCACIÓN",
+            "Licenciatura en Informática, Universidad Estatal, 2020",
+            "",
+            "PROYECTOS",
+            "Sitio Web Portafolio",
+            "- Construí un sitio web personal para mostrar mi trabajo.",
+            "",
+            "Aplicación Gestor de Tareas",
+            "- Simple aplicación para que los usuarios rastreen tareas.",
+            "",
+            "HABILIDADES",
+            "JavaScript, React, HTML, CSS, Git, trabajo en equipo, comunicación, resolución de problemas"
+          ]
+        };
 
-        resumeInput.value = sample;
+        const sample = samples[currentLang] || samples.en;
+        const sampleText = sample.join("\n");
+
+        resumeInput.value = sampleText;
         resumeInput.focus();
-        resumeInput.setSelectionRange(sample.length, sample.length);
+        resumeInput.setSelectionRange(sampleText.length, sampleText.length);
       }
 
       function setActiveStyle(style) {
