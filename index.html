@@ -2299,6 +2299,7 @@
           // Perfect Resume section
           perfectResumeTitle: "Tu CV Perfecto",
           perfectResumeCopyLabel: "Copiar CV",
+          perfectResumeSubtitle: "CV optimizado para ATS, listo para usar.",
           styleDesc: {
             brutal: "Roast cómico y duro. Muy agresivo, pero útil.",
             balanced: "Honesto y amable. Estilo mentor.",
@@ -2555,6 +2556,10 @@
         if (perfectResumeCopyBtn) perfectResumeCopyBtn.innerHTML = `<span class="icon">📋</span><span>${pack.perfectResumeCopyLabel}</span>`;
         if (perfectResumeCopyLabel) perfectResumeCopyLabel.textContent = pack.perfectResumeCopyLabel;
         if (perfectResumeTitle) perfectResumeTitle.textContent = pack.perfectResumeTitle;
+        
+        // Perfect Resume subtitle
+        const perfectResumeSubtitle = document.getElementById("perfectResumeSubtitle");
+        if (perfectResumeSubtitle) perfectResumeSubtitle.textContent = pack.perfectResumeSubtitle;
       }
 
       function setLoading(isLoading) {
@@ -3042,7 +3047,7 @@
             perfectText = JSON.stringify(data);
           }
 
-          perfectResumeBox.innerHTML = `<div style="white-space: pre-wrap; font-family: monospace; line-height: 1.5;">${perfectText}</div>`;
+          perfectResumeBox.innerHTML = `<div style="white-space: pre-wrap; line-height: 1.5;">${perfectText}</div>`;
           perfectResumeCopyBtn.disabled = false;
           
         } catch (err) {
