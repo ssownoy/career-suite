@@ -3018,7 +3018,7 @@
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              resumeText: lastResumeText,
+              resumeText: document.getElementById("resumeInput").value.trim(),
               style: currentStyle,
               lang: currentLang,
               mode: "perfect"
