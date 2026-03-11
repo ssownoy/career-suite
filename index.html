@@ -3018,10 +3018,10 @@
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              resume: lastRoastText,
+              resumeText: lastResumeText,
               style: currentStyle,
               lang: currentLang,
-              prompt: t("perfectResumePrompt")
+              mode: "perfect"
             })
           });
 
