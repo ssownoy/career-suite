@@ -1229,7 +1229,7 @@
     }
 
     /* Light theme overrides */
-    body[data-theme="light"] {
+    body[data-theme="light"] { min-height: 100vh;
       --bg: #f5f5f7;
       --bg-elevated: #ffffff;
       --bg-elevated-soft: #f9fafb;
@@ -1254,6 +1254,8 @@
         #ffffff;
     }
 
+    body[data-theme="light"] .nav-tab { background: #f3f4f6 !important; color: #374151 !important; border-color: #e5e7eb !important; }
+    body[data-theme="light"] .nav-tab.active { background: #ff5c33 !important; color: white !important; }
     body[data-theme="light"] .app-shell {
       box-shadow: 0 22px 60px rgba(15, 23, 42, 0.18);
       border-color: rgba(148, 163, 184, 0.55);
