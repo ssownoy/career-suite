@@ -1668,7 +1668,7 @@
                   <div>
                     <div class="panel-title">
                       <span style="display:none"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><ellipse cx="8" cy="12" rx="4" ry="2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="6" y="8" width="4" height="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
-                      Your Perfect Resume
+                      <span id="perfectResumeTitle">Your Perfect Resume</span>
                     </div>
                     <div class="panel-subtitle">ATS-friendly resume optimized for your career.</div>
                   </div>
@@ -2039,6 +2039,9 @@
           // Perfect Resume button
           perfectResumeBtn: "Build Perfect Resume",
           perfectResumePrompt: "Rewrite this resume making it perfect. Fix all weaknesses, improve wording, make it ATS-friendly. Return only the improved resume text, ready to copy.",
+          // Perfect Resume section
+          perfectResumeTitle: "Your Perfect Resume",
+          perfectResumeCopyLabel: "Copy Resume",
           jobsHint: "ОТКРЫВАЕТ ПОИСК РАБОТЫ В НОВОЙ ВКЛАДКЕ.",
           jobsSubtitle: "Based on your resume and key skills.",
           jobsButton: "Find Matching Jobs",
@@ -2168,6 +2171,9 @@
           // Perfect Resume button
           perfectResumeBtn: "Создать идеальное резюме",
           perfectResumePrompt: "Перепиши это резюме сделав его идеальным. Исправь все слабости, улучшай формулировки, сделай ATS-дружественным. Верни только улучшенный текст резюме, готовый для копирования.",
+          // Perfect Resume section
+          perfectResumeTitle: "Ваше идеальное резюме",
+          perfectResumeCopyLabel: "Скопировать резюме",
           styleDesc: {
             brutal: "Комедийно и жёстко. Очень сурово, но полезно.",
             balanced: "Честно, но доброжелательно. Как наставник.",
@@ -2288,6 +2294,9 @@
           // Perfect Resume button
           perfectResumeBtn: "Crear CV Perfecto",
           perfectResumePrompt: "Reescribe este CV haciéndolo perfecto. Corrige todas las debilidades, mejora la redacción, hazlo ATS-amigable. Devuelve solo el texto del CV mejorado, listo para copiar.",
+          // Perfect Resume section
+          perfectResumeTitle: "Tu CV Perfecto",
+          perfectResumeCopyLabel: "Copiar CV",
           styleDesc: {
             brutal: "Roast cómico y duro. Muy agresivo, pero útil.",
             balanced: "Honesto y amable. Estilo mentor.",
@@ -2537,11 +2546,13 @@
         const perfectResumeBtnLabel = document.getElementById("perfectResumeBtnLabel");
         const perfectResumeCopyBtn = document.getElementById("perfectResumeCopyBtn");
         const perfectResumeCopyLabel = document.getElementById("perfectResumeCopyLabel");
+        const perfectResumeTitle = document.getElementById("perfectResumeTitle");
         
         if (perfectResumeBtn) perfectResumeBtn.innerHTML = `<span class="icon">✨</span><span>${pack.perfectResumeBtn}</span>`;
         if (perfectResumeBtnLabel) perfectResumeBtnLabel.textContent = pack.perfectResumeBtn;
-        if (perfectResumeCopyBtn) perfectResumeCopyBtn.innerHTML = `<span class="icon">📋</span><span>Copy Resume</span>`;
-        if (perfectResumeCopyLabel) perfectResumeCopyLabel.textContent = "Copy Resume";
+        if (perfectResumeCopyBtn) perfectResumeCopyBtn.innerHTML = `<span class="icon">📋</span><span>${pack.perfectResumeCopyLabel}</span>`;
+        if (perfectResumeCopyLabel) perfectResumeCopyLabel.textContent = pack.perfectResumeCopyLabel;
+        if (perfectResumeTitle) perfectResumeTitle.textContent = pack.perfectResumeTitle;
       }
 
       function setLoading(isLoading) {
