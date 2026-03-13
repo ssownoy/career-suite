@@ -128,7 +128,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
 
     .title-group {
@@ -1438,7 +1438,12 @@
       margin-bottom: 16px;
       position: relative;
       z-index: 1;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
+    .nav-tabs::-webkit-scrollbar { display: none; }
 
     .nav-tab {
       display: inline-flex;
@@ -1528,43 +1533,29 @@
       .panel-subtitle { display: none !important; }
       .textarea-helper-row { display: none !important; }
 
-      .header {
-        flex-wrap: nowrap !important;
-        gap: 8px !important;
-      }
+      .title-group { min-width: 0; flex: 1; overflow: hidden; }
+      .title-text h1 { font-size: 1rem !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .meta-chip-row { flex-shrink: 0; }
 
-      .nav-tabs {
-        display: flex !important;
-        overflow-x: auto !important;
-        flex-wrap: nowrap !important;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        gap: 8px;
-        padding-bottom: 4px;
-      }
-      .nav-tabs::-webkit-scrollbar { display: none !important; }
       .nav-tab {
-        white-space: nowrap !important;
-        flex-shrink: 0 !important;
         font-size: 12px !important;
         padding: 6px 12px !important;
+        flex-shrink: 0;
       }
 
       .style-group {
-        display: flex !important;
         overflow-x: auto !important;
         flex-wrap: nowrap !important;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        gap: 8px;
-        width: 100%;
       }
-      .style-group::-webkit-scrollbar { display: none !important; }
+      .style-group::-webkit-scrollbar { display: none; }
+
       .style-btn {
-        white-space: nowrap !important;
-        flex-shrink: 0 !important;
         font-size: 12px !important;
-        padding: 6px 12px !important;
+        padding: 0 12px !important;
+        height: 36px !important;
+        flex-shrink: 0;
       }
 
       .roast-btn {
@@ -1574,15 +1565,8 @@
         box-sizing: border-box !important;
       }
 
-      .upload-row {
-        flex-wrap: wrap !important;
-        gap: 8px !important;
-      }
-
-      .ghost-btn {
-        font-size: 12px !important;
-        padding: 6px 10px !important;
-      }
+      .ghost-btn { font-size: 12px !important; padding: 6px 10px !important; }
+      .copy-btn { font-size: 12px !important; padding: 6px 10px !important; }
     }
   </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMHKQYSMM4"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-WMHKQYSMM4");</script>
