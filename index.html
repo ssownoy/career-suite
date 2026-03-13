@@ -1522,6 +1522,48 @@
     }
     .lang-option:hover { background: var(--bg-elevated-soft); }
     .lang-option.active { color: var(--accent); font-weight: 600; }
+
+    @media (max-width: 640px) {
+      .tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+      }
+      .tabs::-webkit-scrollbar { display: none; }
+      
+      .tab-btn {
+        white-space: nowrap;
+        flex-shrink: 0;
+        font-size: 12px;
+        padding: 6px 12px;
+      }
+
+      .style-group {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .style-group::-webkit-scrollbar { display: none; }
+      
+      .style-btn {
+        white-space: nowrap;
+        flex-shrink: 0;
+        font-size: 12px;
+        padding: 6px 12px;
+      }
+
+      .header-right {
+        gap: 6px;
+      }
+
+      .header-right .btn, .history-btn {
+        font-size: 12px;
+        padding: 6px 10px;
+      }
+    }
   </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMHKQYSMM4"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-WMHKQYSMM4");</script>
 </head>
