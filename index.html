@@ -1525,11 +1525,15 @@
 
     @media (max-width: 640px) {
       .tabs {
-        overflow-x: auto;
+        display: flex;
+        overflow-x: scroll;
         flex-wrap: nowrap;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        gap: 8px;
         padding-bottom: 4px;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
       }
       .tabs::-webkit-scrollbar { display: none; }
       
@@ -1537,22 +1541,25 @@
         white-space: nowrap;
         flex-shrink: 0;
         font-size: 12px;
-        padding: 6px 12px;
+        padding: 6px 14px;
       }
 
       .style-group {
-        overflow-x: auto;
+        display: flex;
+        overflow-x: scroll;
         flex-wrap: nowrap;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        gap: 8px;
+        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
       }
       .style-group::-webkit-scrollbar { display: none; }
-      
       .style-btn {
         white-space: nowrap;
         flex-shrink: 0;
         font-size: 12px;
-        padding: 6px 12px;
+        padding: 6px 14px;
       }
 
       .header-right {
