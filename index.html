@@ -1524,6 +1524,15 @@
     .lang-option.active { color: var(--accent); font-weight: 600; }
 
     @media (max-width: 640px) {
+      .title-sub { display: none !important; }
+      .panel-subtitle { display: none !important; }
+      .textarea-helper-row { display: none !important; }
+
+      .header {
+        flex-wrap: nowrap !important;
+        gap: 8px !important;
+      }
+
       .nav-tabs {
         display: flex !important;
         overflow-x: auto !important;
@@ -1565,12 +1574,14 @@
         box-sizing: border-box !important;
       }
 
-      .panel-subtitle {
-        display: none !important;
+      .upload-row {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
       }
 
-      .title {
-        display: block !important;
+      .ghost-btn {
+        font-size: 12px !important;
+        padding: 6px 10px !important;
       }
     }
   </style>
