@@ -1524,7 +1524,7 @@
     .lang-option.active { color: var(--accent); font-weight: 600; }
 
     @media (max-width: 640px) {
-      .tabs {
+      .nav-tabs {
         display: flex;
         overflow-x: scroll;
         flex-wrap: nowrap;
@@ -1532,12 +1532,11 @@
         scrollbar-width: none;
         gap: 8px;
         padding-bottom: 4px;
-        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+        mask-image: linear-gradient(to right, black 80%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
       }
-      .tabs::-webkit-scrollbar { display: none; }
-      
-      .tab-btn {
+      .nav-tabs::-webkit-scrollbar { display: none; }
+      .nav-tab {
         white-space: nowrap;
         flex-shrink: 0;
         font-size: 12px;
@@ -1551,8 +1550,8 @@
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         gap: 8px;
-        mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+        mask-image: linear-gradient(to right, black 80%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
       }
       .style-group::-webkit-scrollbar { display: none; }
       .style-btn {
