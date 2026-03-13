@@ -1508,10 +1508,10 @@
     }
     .lang-dropdown-btn:hover { border-color: var(--accent); }
     .lang-dropdown-menu {
-      display: none; position: absolute; top: calc(100% + 8px); right: 0;
+      display: none; position: fixed;
       background: var(--bg-elevated); border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md); overflow: hidden;
-      box-shadow: var(--shadow-soft); z-index: 100; min-width: 160px;
+      box-shadow: var(--shadow-soft); z-index: 9999; min-width: 160px;
     }
     .lang-dropdown-menu.open { display: block; }
     .lang-option {
@@ -4122,6 +4122,9 @@
 
       langDropdownBtn.addEventListener('click', (e) => {
         e.stopPropagation();
+        const rect = langDropdownBtn.getBoundingClientRect();
+        langDropdownMenu.style.top = (rect.bottom + 8) + 'px';
+        langDropdownMenu.style.left = rect.left + 'px';
         langDropdownMenu.classList.toggle('open');
       });
 
