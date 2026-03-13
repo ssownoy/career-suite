@@ -1498,6 +1498,30 @@
       }
     }
     button, .style-btn, .roast-btn { text-transform: none !important; letter-spacing: normal !important; }
+    .lang-dropdown { position: relative; }
+    .lang-dropdown-btn {
+      display: flex; align-items: center; gap: 6px;
+      background: var(--bg-elevated); border: 1px solid var(--border-subtle);
+      color: var(--text); padding: 6px 12px; border-radius: var(--radius-pill);
+      cursor: pointer; font-size: 13px; font-weight: 600;
+      transition: border-color 0.2s;
+    }
+    .lang-dropdown-btn:hover { border-color: var(--accent); }
+    .lang-dropdown-menu {
+      display: none; position: absolute; top: calc(100% + 8px); right: 0;
+      background: var(--bg-elevated); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md); overflow: hidden;
+      box-shadow: var(--shadow-soft); z-index: 100; min-width: 160px;
+    }
+    .lang-dropdown-menu.open { display: block; }
+    .lang-option {
+      display: block; width: 100%; text-align: left;
+      padding: 10px 16px; background: none; border: none;
+      color: var(--text); font-size: 13px; cursor: pointer;
+      transition: background 0.15s;
+    }
+    .lang-option:hover { background: var(--bg-elevated-soft); }
+    .lang-option.active { color: var(--accent); font-weight: 600; }
   </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMHKQYSMM4"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-WMHKQYSMM4");</script>
 </head>
@@ -1535,16 +1559,21 @@
           </div>
         </div>
         <div class="meta-chip-row">
-          <div class="lang-switch" id="langSwitch" aria-label="">
-            <button type="button" class="lang-btn active" data-lang="en" id="langEN">EN</button>
-            <button type="button" class="lang-btn" data-lang="ru" id="langRU">RU</button>
-            <button type="button" class="lang-btn" data-lang="es" id="langES">ES</button>
-            <button type="button" class="lang-btn" data-lang="fr" id="langFR">FR</button>
-            <button type="button" class="lang-btn" data-lang="pt" id="langPT">PT</button>
-            <button type="button" class="lang-btn" data-lang="vi" id="langVI">VI</button>
-            <button type="button" class="lang-btn" data-lang="zh" id="langZH">ZH</button>
-            <span style="opacity:0.35;">|</span>
-          </div>
+            <div class="lang-dropdown" id="langDropdown">
+              <button class="lang-dropdown-btn" id="langDropdownBtn">
+                <span id="langDropdownLabel">EN</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </button>
+              <div class="lang-dropdown-menu" id="langDropdownMenu">
+                <button class="lang-option active" data-lang="en">🇬🇧 English</button>
+                <button class="lang-option" data-lang="ru">🇷🇺 Русский</button>
+                <button class="lang-option" data-lang="es">🇪🇸 Español</button>
+                <button class="lang-option" data-lang="fr">🇫🇷 Français</button>
+                <button class="lang-option" data-lang="pt">🇧🇷 Português</button>
+                <button class="lang-option" data-lang="vi">🇻🇳 Tiếng Việt</button>
+                <button class="lang-option" data-lang="zh">🇨🇳 中文</button>
+              </div>
+            </div>
 
 
           <div style="display:flex;gap:6px;align-items:center;"><button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">🌙</button><a href="https://t.me/CareerSuiteAI_bot" target="_blank" rel="noopener noreferrer" class="copy-btn" title="Try our Telegram Bot" style="text-decoration:none;display:inline-flex;align-items:center;gap:4px;"><span style="font-size:0.78rem;">Bot</span></a><button type="button" class="copy-btn" id="historyBtn" title=""><span><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 4v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><span id="uiHistoryBtn">History</span></button></div>
@@ -4084,6 +4113,33 @@
 
       langButtons.forEach((btn) => {
         btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
+      });
+
+      // Dropdown language switcher
+      const langDropdownBtn = document.getElementById('langDropdownBtn');
+      const langDropdownMenu = document.getElementById('langDropdownMenu');
+      const langDropdownLabel = document.getElementById('langDropdownLabel');
+
+      langDropdownBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langDropdownMenu.classList.toggle('open');
+      });
+
+      document.addEventListener('click', () => {
+        langDropdownMenu.classList.remove('open');
+      });
+
+      document.querySelectorAll('.lang-option').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const lang = btn.dataset.lang;
+          currentLang = lang;
+          localStorage.setItem(LANG_KEY, lang);
+          langDropdownLabel.textContent = lang.toUpperCase();
+          document.querySelectorAll('.lang-option').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          langDropdownMenu.classList.remove('open');
+          applyLang();
+        });
       });
 
       if (themeToggle) {
